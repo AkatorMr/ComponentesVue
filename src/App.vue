@@ -6,7 +6,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
-import Fecha from "./components/Fecha"
+import Fecha from "./components/Fecha.vue"
 
 export default {
   name: 'App',
