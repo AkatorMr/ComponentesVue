@@ -1,11 +1,10 @@
 <template>
-  <div class>
-    <input @keypress="key_press" @keydown="key_down" v-model="fecha" @blur="CompletarFecha" />
+  <div class="">
+    <input :class="'fecha '+(error?'conerror':'')" @focus="OnFocus" @keypress="key_press" @keydown="key_down" v-model="fecha" @blur="CompletarFecha" />
   </div>
 </template>
 
 <script>
-
 
 export default {
   name: "Fecha",
@@ -14,11 +13,83 @@ export default {
       msg: "Welcome to Your Vue.js App",
       re: null,
       fecha: "",
+      error:false
     };
   },
   methods: {
+    LanzarFechaCompleta:function(){
+      console.log("Fecha completa");
+    },
+    LanzarError:function(){
+      console.log("Error en la escritura de la fecha");
+    },
+    OnFocus:function(){
+      this.error = false;
+    },
     CompletarFecha:function (){
-      this.fecha+="66";
+      //this.fecha+="66";
+      let base = this.fecha;
+      let cu_fe = this.fecha.split("/");
+      let current_date = new Date();
+      let dia = "";
+      let mes = "000"+(current_date.getMonth()+1)+"";
+      let anio = "0000"+current_date.getFullYear();
+      mes = ""+mes.substr(mes.length-2).toString();
+      
+      anio = ""+anio.substr(anio.length-4).toString();
+      
+      switch(cu_fe.length){
+        case 1:
+          //Sin barras
+          if(cu_fe.length==1 && cu_fe !="0"){
+            this.fecha="0"+this.fecha;
+            this.fecha+="/"+mes;
+            this.fecha+="/"+anio;
+          }
+          break;
+          case 2:
+            //Tiene 1 barra osea dia y mes
+            dia ="00"+ cu_fe[0];
+            this.fecha = dia.substring(dia.length-2)+"/";
+            mes = "00" + cu_fe[1];
+            this.fecha += mes.substring(mes.length-2)+"/";
+            this.fecha+=anio;
+            break;
+          case 3:
+            //Tiene las 2 barras, es decir todos los datos
+            dia ="00"+ cu_fe[0];
+            
+            this.fecha = dia.substring(dia.length-2)+"/";
+            if(this.fecha=="00/") {
+              this.error = true;
+              this.LanzarError();
+            }
+            mes = "00" + cu_fe[1];
+            mes=mes.substring(mes.length-2);
+            if(mes=="00") {
+              this.error = true;
+              this.LanzarError();
+            }
+            this.fecha += mes + "/";
+            anio = "0000" + cu_fe[2];
+            let a_num =cu_fe[2].substring(-1)*1;
+            if( a_num<99){
+              if(a_num<50){
+                  anio="0000"+(a_num*1+2000);
+              }else{
+                anio="0000"+(a_num*1+1900);
+              }
+            }
+            anio = anio.substring(anio.length-4);
+            
+            if(anio=="0000" && cu_fe[2]!="00") {
+              this.error = true;
+              this.LanzarError();
+            }
+            this.fecha += ""+anio;
+            break;
+      }
+
     },
     VerificarGrupoCompleto: function(next){
       let p = this.fecha.split("/");
@@ -123,4 +194,11 @@ li {
 a {
   color: #42b983;
 }
+.fecha.conerror{
+  background: rgb(255, 133, 133);
+  color:rgb(168, 0, 0);
+  border-color: red;
+  
+}
+
 </style>
