@@ -77,7 +77,7 @@ export default {
               if(a_num<50){
                   anio="0000"+(a_num*1+2000);
               }else{
-                anio="0000"+(a_num*1+1900);
+                anio=`0000${a_num*1+1900}`;
               }
             }
             anio = anio.substring(anio.length-4);
