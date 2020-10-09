@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <fecha />
+    <tabla />
   </div>
 </template>
 
@@ -8,12 +8,14 @@
 import Vue from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
 import Fecha from "./components/Fecha.vue"
+import Tabla from "./components/Tabla.vue"
 
 export default Vue.extend({
   name: 'App',
   components: {
     HelloWorld,
-    Fecha
+    Fecha,
+    Tabla
   }
 });
 </script>

@@ -10,7 +10,6 @@ export default {
   name: "Fecha",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
       re: null,
       fecha: "",
       error:false
