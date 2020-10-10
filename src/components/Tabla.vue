@@ -31,8 +31,25 @@ export default {
         console.log(this.valores[this.l_id]); 
         let texto = this.valores[this.l_id];
         let celda_inicial = this.l_id;
-        
+
+        this.valores[this.l_id]="";
+
+        if(texto.includes("\t")){
+          //Contiene tabs asi que hay que separarlos por eso
+          let reg = new RegExp("\t");
+          let parts = texto.split(reg);
+          console.log(parts);
+          for(let part=0;part<parts.length;part++){
+            this.valores[celda_inicial+part]=parts[part];
+            //console.log(this.valores);
+            this.$refs["Celda"][part+celda_inicial].value = parts[part];
+          }
+          console.log(this.valores);
+        }
+
+
         this.l_id = -1;
+        return true;
       }
     },
 
