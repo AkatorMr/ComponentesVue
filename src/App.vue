@@ -1,34 +1,48 @@
 <template>
   <div id="app">
     <arbol :indice="0" titulo="Root">
-      <arbol :indice="1" titulo="Child">
-        <span>Hola Mundo</span>
+      <arbol :indice="1" titulo="Child3">
+        <div>
+          <u>
+            <li>Uno</li>
+            <li>Dods</li>
+          </u>
+        </div>
       </arbol>
-      
+      <arbol :indice="3" titulo="Child4">
+        <arbol :indice="4" titulo="Child5">
+          <div>
+            <u>
+              <li>Uno</li>
+              <li>Dods</li>
+            </u>
+          </div>
+        </arbol>
+      </arbol>
+      <div>Hola Mundo3</div>
     </arbol>
-    
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import Vue from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
 import Fecha from "./components/Fecha.vue";
 import Tabla from "./components/Tabla.vue";
 import Arbol from "./components/Arbol.vue";
 
 export default Vue.extend({
-  name: 'App',
+  name: "App",
   components: {
     HelloWorld,
     Fecha,
     Tabla,
     Arbol
   },
-  data: function(){
-    return({
-      a:1
-    });
+  data: function() {
+    return {
+      a: 1
+    };
   }
 });
 </script>
