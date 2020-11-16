@@ -1,10 +1,10 @@
 <template>
-  <div :class="indice>0?'arbol':''">
+  <div :class="(indice>0?'arbol':'') + ' ' +(conborde?'conborde':'')+' '+michis()" >
     <div>
-      <div class="ele"></div>
+      <div :class="'ele'+' '+(conborde?'conborde':'')"></div>
       <span class="btn btn-sm btn-outline-primary" v-on:click="mostrar^=true;">{{titulo}}</span>
     </div>
-    <div class="desplegable" v-if="mostrar">
+    <div class="desplegable" v-if="mostrar" @mouseover="michi=true" @blur="michi=false" @mouseleave="michi=false">
       <slot>No Disponible!</slot>
     </div>
   </div>
@@ -16,17 +16,29 @@ export default {
   components: {},
   props: {
     indice: Number,
-    titulo: String
+    titulo: String,
+    conborde:Boolean
   },
   data() {
     return {
       re: null,
       fecha: "",
       error: false,
-      mostrar: true
+      mostrar: true,
+      michi:false
     };
   },
   methods: {
+    ss:function(){
+this.michi=true;
+console.log("Si");
+    },
+    michis(){
+      if(this.michi)
+      return "echoss";
+      else
+      return "";
+    },
     Indice: function() {
       return this.indice + 1;
     }
@@ -40,8 +52,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.echoss{
+  background-color: red;
+}
 .arbol {
   /*margin-left: 30px;*/
+  /*padding-top: 8px;
+  border-left-color: black;
+  border-left-style: dashed;
+  border-left-width: 1px;*/
+}
+.arbol.conborde{
   padding-top: 8px;
   border-left-color: black;
   border-left-style: dashed;
@@ -50,19 +71,20 @@ export default {
 .desplegable {
   padding-left: 30px;
 }
+
 .arbol .ele {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #2c3e50;
   width: 0;
   height: 7px;
-  /* border-left-color: black;
+  border-left-color: black;
   border-left-style: dashed;
-  border-left-width: 1px; */
+  border-left-width: 1px;
   border-bottom: 1px dashed black;
   content: "";
   margin-bottom: 0;
-  margin-left: 0;
+  margin-left: -0;
   float: left;
   padding-right: 11px;
 }

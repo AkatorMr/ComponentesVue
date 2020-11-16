@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <arbol :indice="0" titulo="Root">
-      <arbol :indice="1" titulo="Child3">
+      <arbol :indice="1" titulo="Child3" :conborde="true">
+        <arbol :indice="4" titulo="Child3.1"></arbol>
         <div>
           <u>
             <li>Uno</li>
             <li>Dods</li>
           </u>
         </div>
+        
       </arbol>
       <arbol :indice="3" titulo="Child4">
         <arbol :indice="4" titulo="Child5">
