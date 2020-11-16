@@ -2,17 +2,18 @@
   <div id="app">
     <arbol :indice="0" titulo="Root">
       <arbol :indice="1" titulo="Child3" :conborde="true">
-        <arbol :indice="4" titulo="Child3.1"></arbol>
+        <arbol :indice="4" titulo="Child3.1" :conborde="true"></arbol>
+        <arbol :indice="5" titulo="Child3.2" :conborde="true"></arbol>
+        <arbol :indice="6" titulo="Child3.3" :conborde="true"></arbol>
         <div>
           <u>
             <li>Uno</li>
             <li>Dods</li>
           </u>
         </div>
-        
       </arbol>
-      <arbol :indice="3" titulo="Child4">
-        <arbol :indice="4" titulo="Child5">
+      <arbol :indice="3" titulo="Child4" :conborde="true">
+        <arbol :indice="4" titulo="Child5" :conborde="true">
           <div>
             <u>
               <li>Uno</li>
@@ -24,7 +25,7 @@
       <div>Hola Mundo3</div>
     </arbol>
 
-    <PanelAlarma></PanelAlarma>
+    <!-- <PanelAlarma></PanelAlarma> -->
   </div>
 </template>
 
