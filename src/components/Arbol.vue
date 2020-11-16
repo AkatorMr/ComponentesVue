@@ -55,25 +55,40 @@ export default {
   border-left-style: dashed;
   border-left-width: 1px;
 }
-div.arbol.conborde + div.arbol.conborde {
+.arbol.conborde {
   padding-top: 8px;
   border-left-color: black;
   border-left-style: dashed;
   border-left-width: 1px;
 }
-div.arbol.conborde ~ div:not(.arbol.conborde) {
-  padding-top: 8px;
-  border-left-color: black;
-  border-left-style: dashed;
-  border-left-width: 0px;
-  background-color: blue;
-}
 
-div.desplegable > div.arbol.conborde:last-of-type {
-  background-color: red;
-}
 .desplegable {
   padding-left: 30px;
+}
+.desplegable .arbol.conborde:last-child{
+  border-left-width: 0px;
+  
+}
+.desplegable > div:not(.arbol){
+  position: relative;
+  border-left-color: black;
+  border-left-style: dashed;
+  border-left-width: 1px;
+  padding-left:5px;
+}
+.desplegable > div:not(.arbol)::before{
+  border-left: 1px dashed black;
+  position: absolute;
+  border-bottom: 1px dashed black;
+  bottom: 0px;
+  left: 0px;
+  width: 17px;
+  height: 0px;
+  
+  
+
+contain: content;
+content: "";
 }
 
 .arbol .ele {
