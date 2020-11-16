@@ -13,6 +13,11 @@ export default Vue.extend({
   props: {
     msg: String,
   },
+  methods:{
+    test:function(){
+      
+    }
+  }
 });
 </script>
 

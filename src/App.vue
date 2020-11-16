@@ -21,6 +21,8 @@
       </arbol>
       <div>Hola Mundo3</div>
     </arbol>
+
+    <PanelAlarma></PanelAlarma>
   </div>
 </template>
 
@@ -31,13 +33,16 @@ import Fecha from "./components/Fecha.vue";
 import Tabla from "./components/Tabla.vue";
 import Arbol from "./components/Arbol.vue";
 
+import PanelAlarma from "./components/PanelAlarma.vue";
+
 export default Vue.extend({
   name: "App",
   components: {
     HelloWorld,
     Fecha,
     Tabla,
-    Arbol
+    Arbol,
+    PanelAlarma
   },
   data: function() {
     return {
