@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <arbol :indice="0" titulo="Root">
+    <!-- <arbol :indice="0" titulo="Root">
       <arbol :indice="1" titulo="Child3" :conborde="true">
         <arbol :indice="4" titulo="Child3.1" :conborde="true"></arbol>
         <arbol :indice="5" titulo="Child3.2" :conborde="true"></arbol>
@@ -23,9 +23,17 @@
         </arbol>
       </arbol>
       <div>Hola Mundo3</div>
-    </arbol>
+    </arbol> -->
 
     <!-- <PanelAlarma></PanelAlarma> -->
+
+    <tree-node nombre="Reconquista">
+      <tree-node nombre="Las Flores"></tree-node>
+        <tree-node nombre="San Geronimo">
+          <tree-node nombre="Casa 52"></tree-node>
+        </tree-node>
+        <tree-node nombre="Las Flores"></tree-node>
+    </tree-node>
   </div>
 </template>
 
@@ -35,8 +43,10 @@ import HelloWorld from "./components/HelloWorld.vue";
 import Fecha from "./components/Fecha.vue";
 import Tabla from "./components/Tabla.vue";
 import Arbol from "./components/Arbol.vue";
+import treenode from "./components/tree-node.vue";
 
 import PanelAlarma from "./components/PanelAlarma.vue";
+import TreeNode from './components/tree-node.vue';
 
 export default Vue.extend({
   name: "App",
@@ -45,7 +55,8 @@ export default Vue.extend({
     Fecha,
     Tabla,
     Arbol,
-    PanelAlarma
+    PanelAlarma,
+    TreeNode
   },
   data: function() {
     return {
