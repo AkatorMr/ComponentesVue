@@ -1,7 +1,7 @@
 <template>
   <div :class="(indice>0?'arbol':'') + ' ' +(conborde?'conborde':'')">
     <div>
-      <div :class="'ele'+' '+(conborde?'conborde':'')"></div>
+      <div :class="'hroot'+' '+(conborde?'conborde':'vroot')"></div>
       <span class="btn btn-sm btn-outline-primary" v-on:click="mostrar^=true;">{{titulo}}</span>
     </div>
     <div class="desplegable" v-if="mostrar">
@@ -47,6 +47,9 @@ export default {
   border-left-color: black;
   border-left-style: dashed;
   border-left-width: 1px;*/
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #2c3e50;
 }
 .desplegable .arbol.conborde:first-child {
   padding-top: 8px;
@@ -55,7 +58,7 @@ export default {
   border-left-style: dashed;
   border-left-width: 1px;
 }
-.arbol.conborde {
+.conborde {
   padding-top: 8px;
   border-left-color: black;
   border-left-style: dashed;
@@ -65,18 +68,17 @@ export default {
 .desplegable {
   padding-left: 30px;
 }
-.desplegable .arbol.conborde:last-child{
+.desplegable .arbol.conborde:last-child {
   border-left-width: 0px;
-  
 }
-.desplegable > div:not(.arbol){
+.desplegable > div:not(.arbol) {
   position: relative;
   border-left-color: black;
   border-left-style: dashed;
   border-left-width: 1px;
-  padding-left:5px;
+  padding-left: 5px;
 }
-.desplegable > div:not(.arbol)::before{
+.desplegable > div:not(.arbol)::before {
   border-left: 1px dashed black;
   position: absolute;
   border-bottom: 1px dashed black;
@@ -84,11 +86,33 @@ export default {
   left: 0px;
   width: 17px;
   height: 0px;
-  
-  
 
-contain: content;
-content: "";
+  contain: content;
+  content: "";
+}
+
+.arbol .hroot {
+  width: 0;
+  border-bottom: 1px dashed black;
+  content: "";
+  margin-bottom: 0;
+  margin-left: -0;
+  float: left;
+  padding-right: 11px;
+}
+
+.arbol .vroot {
+  width: 0;
+  height: 12px;
+  border-left-color: black;
+  border-left-style: dashed;
+  border-left-width: 1px;
+
+  content: "";
+  margin-bottom: 0;
+  margin-left: -0;
+  float: left;
+  padding-right: 11px;
 }
 
 .arbol .ele {
@@ -96,10 +120,10 @@ content: "";
   -webkit-font-smoothing: antialiased;
   color: #2c3e50;
   width: 0;
-  height: 7px;
+  height: 8px;
   border-left-color: black;
   border-left-style: dashed;
-  border-left-width: 1px;
+  border-left-width: 0px;
   border-bottom: 1px dashed black;
   content: "";
   margin-bottom: 0;

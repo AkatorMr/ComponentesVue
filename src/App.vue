@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!--     
     <arbol :indice="0" titulo="Root">
       <arbol :indice="1" titulo="Child3" :conborde="true">
         <arbol :indice="4" titulo="Child3.1" :conborde="true"></arbol>
@@ -13,7 +14,7 @@
         </div>
       </arbol>
       <arbol :indice="3" titulo="Child4" :conborde="true">
-        <arbol :indice="4" titulo="Child5" :conborde="true">
+        <arbol :indice="4" titulo="Child5" :conborde="false">
           <div>
             <u>
               <li>Uno</li>
@@ -23,9 +24,9 @@
         </arbol>
       </arbol>
       <div>Hola Mundo3</div>
-    </arbol>
+    </arbol>-->
 
-    <!-- <PanelAlarma></PanelAlarma> -->
+    <PanelAlarma></PanelAlarma>
   </div>
 </template>
 
