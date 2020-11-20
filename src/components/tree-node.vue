@@ -1,7 +1,10 @@
 <template>
     <div class="tree-node">
-        <span>{{nombre}}</span>
-        <slot>No</slot>
+        <div :class="folder()"></div>
+        <div @click="open_tree^=true">{{nombre}}</div>
+        <div class="tree-node-child" v-if="open_tree">
+            <slot>No</slot>
+        </div>
     </div>
 </template>
 
@@ -14,11 +17,15 @@ export default Vue.extend({
     },
     data:function(){
         return({
-
+            open_tree:false
         });
     },
     methods:{
-
+        folder:function(){
+            if(this.open_tree)
+            return "icon icon-folder-minus";    
+            return "icon icon-folder-plus";
+        }
     },
     mounted:function(){
 
@@ -26,13 +33,38 @@ export default Vue.extend({
 })
 </script>
 <style  scoped>
-    .tree-node{
-        padding-left:20px;
-    }
-    .tree-node::before{
-        content: "";
+    .icon{
         width: 20px;
-        height: 100%;
-        background-color: blue;
+        height: 20px;
+        float:left;
+        background-repeat: no-repeat;
+        background-size: 1rem 1rem;
+        margin-right: 10px;
     }
+    .icon.icon-folder-plus{
+        background-image: url("./../assets/folder-plus.svg");
+    }
+
+    .icon.icon-folder-minus{
+        background-image: url("./../assets/folder-minus.svg");
+    }
+    .tree-node div .tree-node{
+        margin-left: 10px;
+        padding-left:10px;
+        border-left-width: 0.1rem;
+        border-left-style: dashed;
+        border-left-color: #acacac;
+    }
+   .tree-node .tree-node-child{
+       margin-left: 6px;
+   }
+    .tree-node .span{
+        
+        width: 32px;
+        height: 32px;
+        background-color: blue;
+        
+    }
+
+    
 </style>
