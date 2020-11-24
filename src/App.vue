@@ -40,9 +40,9 @@
       <!--El cuerpo de -->
       <div class="card tab-card" v-if="tabActive==2">
         <div class="card-body row">
-          <div class="col col-3">
-            <!--Inicio De Arbol --->
-            <tree-node nombre="Reconquista">
+          <!-- <div class="col col-3"> -->
+          <!-- Inicio De Arbol --->
+          <!-- <tree-node nombre="Reconquista">
               <tree-node nombre="Las Flores"></tree-node>
               <tree-node nombre="San Geronimo">
                 <tree-node nombre="Casa 52" :device="true">
@@ -52,9 +52,12 @@
                 </tree-node>
               </tree-node>
               <tree-node nombre="Las Flores"></tree-node>
-            </tree-node>
-            <!--Fin De Arbol --->
-          </div>
+          </tree-node>-->
+          <!--Fin De Arbol - -->
+
+          <!-- <tree-node v-for="rama in arbol" :key="rama.name" :nombre="rama.name"></tree-node> -->
+          <!-- </div> -->
+          <tree-constructor></tree-constructor>
           <div class="col">
             <table class="table table-sm table-hover">
               <thead>
@@ -104,6 +107,7 @@ import PanelAlarma from "./components/PanelAlarma.vue";
 import TreeNode from "./components/tree-node.vue";
 import NodeSensor from "./components/node-sensor.vue";
 import Tabs from "./components/tabs.vue";
+import TreeConstructor from "./components/tree-constructor.vue";
 
 export default Vue.extend({
   name: "App",
@@ -115,12 +119,28 @@ export default Vue.extend({
     PanelAlarma,
     TreeNode,
     NodeSensor,
-    Tabs
+    Tabs,
+    TreeConstructor
   },
   data: function() {
     return {
       a: 1,
       tabActive: 0,
+      arbol: [
+        {
+          name: "Reconquista",
+          sub: [
+            {
+              name: "San Gerónimo",
+              sub: [
+                { name: "Mi Casa", sub: [] },
+                { name: "Tu Casa", sub: [] }
+              ]
+            },
+            { name: "Hospital", sub: [] }
+          ]
+        }
+      ],
       items: [
         { nombre: "Joder" },
         { nombre: "Test" },
